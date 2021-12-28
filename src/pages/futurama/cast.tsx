@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
-import { useFuturamaData } from '../hooks/useFuturamaData';
-import { Cast } from '../types/Cast';
+import { useFuturamaData } from '../../hooks/useFuturamaData';
+import { Cast } from '../../types/Cast';
 
 const CastPage: NextPage = () => {
     const {data, error} = useFuturamaData('cast');
