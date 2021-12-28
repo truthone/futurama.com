@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import { useFuturamaData } from '../hooks/useFuturamaData';
 import { Info } from '../types/Info';
+import styled from "@emotion/styled";
 
 const InfoPage: NextPage = () => {
   const {data, error} = useFuturamaData('info');
@@ -9,29 +10,83 @@ const InfoPage: NextPage = () => {
   if(!data) return <div>로딩중...</div>
   
   return(
-    <div>
-      <h1>퓨처라마 INFO</h1>
+    <Container>
+      <Header>퓨처라마 INFO</Header>
       <main>
         {data.map((infoData: Info) => {
           const {id, synopsis,creators, yearsAired} = infoData;
           return(
-            <><div key={`info-list-${id}`}>
-              <h2>시놉시스: {synopsis}</h2>
-              <p>제작연도: {yearsAired}</p>
-            </div>
-            <div>
+            <><Container key={`info-list-${id}`}>
+              <div>{yearsAired} 방영</div>
+              <Desc>{synopsis}</Desc>
+            </Container>
+            <Title>Creators</Title>
+            <Carousel>
               {creators.map((creator) => {
                 return (
-                  <><div>{creator.url}</div>
-									<h3>이름: {creator.name}</h3></>
+                  <Card>
+                    <h3>{creator.name}</h3>
+                    <MoreBtn href={`${creator.url}`}>더보기</MoreBtn>
+                  </Card>
                 );
               })}
-            </div></>
+            </Carousel></>
           )
         })}
       </main>
-    </div>
+    </Container>
   );
 }
 
 export default InfoPage;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding: 1.2rem;
+`;
+
+const Header = styled.h1`
+  color: orange;
+  text-align: center;
+`;
+
+const Desc = styled.p`
+  backgound-color: grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+`;
+
+const Carousel = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding: 1.2rem;
+`;
+
+const Title = styled.h2`'
+  font-weight: bold;
+
+`;
+
+const Card = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  padding: 1.2rem;
+`;
+
+const MoreBtn = styled.a`
+  color: grey;
+  margin-left: 0.3rem;
+  cursor: pointer;
+`;
+
