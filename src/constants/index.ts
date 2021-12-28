@@ -1,4 +1,4 @@
-export const FUTURAMA_API_ENDPOINT = "https://api.sampleapis.com/futurama";
+export const FUTURAMA_API_ENDPOINT = "https://api.sampleapis.com/futurama/";
 
 export const MEDIA_QUERY_END_POINT = {
   MOBILE: '640px',
@@ -27,7 +27,7 @@ export const ROUTES = [
       },
       {
         ID: 2,
-        PATH: '/characters',
+        PATH: '/character',
         LABEL: '캐릭터소개',
         ORDER: 2,
       },      

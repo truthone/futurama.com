@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
-import { useFuturamaData } from '../hooks/useFuturamaData';
-import { Info } from '../types/Info';
+import { useFuturamaData } from '../../hooks/useFuturamaData';
 import styled from "@emotion/styled";
+import { Info } from '../../types/Info';
 
 const InfoPage: NextPage = () => {
   const {data, error} = useFuturamaData('info');

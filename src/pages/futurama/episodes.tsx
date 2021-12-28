@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
-import { useFuturamaData } from '../hooks/useFuturamaData';
-import { Episode } from '../types/Episode';
+import { useFuturamaData } from '../../hooks/useFuturamaData';
+import { Episode } from '../../types/Episode';
 
 const EpisodesPage: NextPage = () => {
     const {data, error} = useFuturamaData('episodes');
